@@ -1,23 +1,21 @@
 <?php
-// MySQL database configuration
+
 $host = 'localhost';
-$user = 'root';  // Your MySQL username
-$password = 'amaro@071318';  // Your MySQL password
-$database = 'uploadimagetest';  // The database you created
+$user = 'root'; 
+$password = 'amaro@071318'; 
+$database = 'uploadimagetest';  
 
-// Connect to MySQL database
-$conn = new mysqli($host, $user, $password, $database, 3307); // Adjusted to default port 3306
 
-// Check for connection errors
+$conn = new mysqli($host, $user, $password, $database, 3307); 
+
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Fetch all image file paths from the database
 $query = "SELECT file_path FROM images";
 $result = $conn->query($query);
 
-// Check if images exist
+
 $images = [];
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
@@ -25,7 +23,7 @@ if ($result->num_rows > 0) {
     }
 }
 
-// Close the database connection
+
 $conn->close();
 ?>
 
